@@ -3,9 +3,10 @@
 namespace WepAPISample.Controllers
 {
     [ApiController]
+    [Route("api/cities")]
     public class CitiesController:ControllerBase
     {
-        [HttpGet("cities")]
+        [HttpGet("list")]
         public JsonResult GetList()
         {
 
@@ -26,6 +27,23 @@ namespace WepAPISample.Controllers
                 new { Id=13,Name="Jerusalem" },
             }
                 );*/
+        }
+
+        [HttpGet("getonecity/{id}")]
+        public JsonResult GetCity(int id)
+        {
+
+            List<City> list = new List<City>();
+            list.Add(new City() { Id = 1, Name = "RamatGan" });
+            list.Add(new City() { Id = 2, Name = "Tel Aviv" });
+            list.Add(new City() { Id = 3, Name = "Jaffo" });
+            list.Add(new City() { Id = 4, Name = "Jerusalem" });
+
+            var ret = list.Find(x => x.Id == id);
+
+
+            return new JsonResult(ret);
+            
         }
     }
 }
