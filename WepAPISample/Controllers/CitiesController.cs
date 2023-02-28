@@ -45,5 +45,11 @@ namespace WepAPISample.Controllers
             return new JsonResult(ret);
             
         }
+
+        [HttpPost("savecity")]
+        public JsonResult SaveCityData(int id, string name)
+        {
+            return new JsonResult("OK");
+        }
     }
 }
